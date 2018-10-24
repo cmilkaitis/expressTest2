@@ -98,7 +98,7 @@ app.post('/users/add', (req, res) => {
 
 app.delete('users/delete/:id', (req, res) => {
     let id = req.params.id
-    let test = parseInt(users.indexOf(users[id]))
+    let test = users.indexOf(users[id])
     
     if(test !== -1){
         users.splice(id,1)
@@ -202,7 +202,7 @@ app.post('/todos/add', (req, res) => {
 // Delete a TODO based on ID
 app.delete('/todos/delete/:id', (req,res) => {
     let id = req.params.id
-    let test = parseInt(todos.indexOf(todos[id]))
+    let test = todos.indexOf(todos[id])
    
     if(test !== -1){
         todos.splice(id,1)
@@ -215,7 +215,7 @@ app.delete('/todos/delete/:id', (req,res) => {
 // Update a todo based on ID
 app.put('/todos/update/:id', (req, res) => {
     let id = req.params.id
-    let test = parseInt(todos.indexOf(todos[id]))
+    let test = todos.indexOf(todos[id])
     let title = req.body.title 
     let author = req.body.author
     let content = req.body.content
