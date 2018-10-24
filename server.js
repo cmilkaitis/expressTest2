@@ -94,7 +94,7 @@ app.post('/', (req, res) => {
 
 app.delete('/:id', (req, res) => {
     let id = req.params.id
-    let test = parseInt(users.indexOf(users[id]))
+    let test = users.indexOf(users[id])
     
     if(test !== -1){
         users.splice(id,1)
