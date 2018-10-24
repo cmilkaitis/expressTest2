@@ -7,6 +7,49 @@ const port = 5000
 app.use(bp.json())
 app.use(bp.urlencoded({extended: false}))
 
+// Create a get route that displays your personal name  
+app.get("/name/", (req, res) => {
+    res.send("Chris Milkaitis");
+  });
+  
+  // Create a dynamic route that says something using the parameter
+  app.get("/input/:input", (req, res) => {
+    res.send(req.params.input);
+  });
+  
+  // Create a dynamic route a word and should spell the word back one line at a time
+app.get("/word/:word", (req, res) => {
+    let word = req.params.word;
+    let split_word = word.split("");
+  
+    res.writeHead(200, { "Content-Type": "text/html" });
+  
+    split_word.forEach(letter => {
+      res.write(`${letter} <br>`);
+    });
+    res.end();
+});
+  
+  /* Create a post route that accepts a username and password. in your route have a static user name and password and then check to see if the username and password send match. if they match send a json with a status of "logged in" or respond with a json that has a status of "invalid credentials" */
+let user = [
+    {
+      username: "testuser1",
+      password: "testpassword"
+    }
+];
+
+  
+app.post("/login", (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    
+    if (user[0].username == username && user[0].password == password) {
+        res.send("Logged In");
+    } else {
+        res.status(200).send("Invaild credentials");
+    }
+});
+
 let id_count = 3;
 let users = [
     {
@@ -30,8 +73,9 @@ let users = [
         password: "mypassword"
     }
 ]
+
 app.get('/', (req, res) => {
-    res.json(users)
+    res.status(200).json(users)
 })
 
 app.post('/', (req, res) => {
@@ -40,12 +84,12 @@ app.post('/', (req, res) => {
 
     users.forEach(user => {
         if(user.username === username){
-            return res.json({error:`${username} already exists`})
+            return res.status(406).json({error:`${username} already exists`})
         } 
     })
     id_count++;
     users.push({id: id_count, username, password})
-    res.redirect('/')
+    res.status(200).redirect('/')
 })
 
 app.delete('/:id', (req, res) => {
@@ -55,9 +99,9 @@ app.delete('/:id', (req, res) => {
     if(test !== -1){
         users.splice(id,1)
     } else {
-        return res.json({error: `No user id of ${id}`})
+        return res.status(406).json({error: `No user id of ${id}`})
     }
-    res.redirect('/')
+    res.status(200).redirect('/')
 })
 
 app.listen(port, console.log(`Listening on ${port}`))
