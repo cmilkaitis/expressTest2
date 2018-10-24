@@ -12,12 +12,12 @@ app.get("/name/", (req, res) => {
     res.status(200).send("Chris Milkaitis");
   });
   
-  // Create a dynamic route that says something using the parameter
+// Create a dynamic route that says something using the parameter
   app.get("/input/:input", (req, res) => {
     res.status(200).send(req.params.input);
   });
   
-  // Create a dynamic route a word and should spell the word back one line at a time
+// Create a dynamic route a word and should spell the word back one line at a time
 app.get("/word/:word", (req, res) => {
     let word = req.params.word;
     let split_word = word.split("");
@@ -30,14 +30,17 @@ app.get("/word/:word", (req, res) => {
     res.end();
 });
   
-  /* Create a post route that accepts a username and password. in your route have a static user name and password and then check to see if the username and password send match. if they match send a json with a status of "logged in" or respond with a json that has a status of "invalid credentials" */
+/* Create a post route that accepts a username and password. 
+in your route have a static user name and password and then 
+check to see if the username and password send match. if they 
+match send a json with a status of "logged in" or respond with 
+a json that has a status of "invalid credentials" */
 let user = [
     {
       username: "testuser1",
       password: "testpassword"
     }
 ];
-
   
 app.post("/login", (req, res) => {
     let username = req.body.username;
