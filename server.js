@@ -9,12 +9,12 @@ app.use(bp.urlencoded({extended: false}))
 
 // Create a get route that displays your personal name  
 app.get("/name/", (req, res) => {
-    res.send("Chris Milkaitis");
+    res.status(200).send("Chris Milkaitis");
   });
   
   // Create a dynamic route that says something using the parameter
   app.get("/input/:input", (req, res) => {
-    res.send(req.params.input);
+    res.status(200).send(req.params.input);
   });
   
   // Create a dynamic route a word and should spell the word back one line at a time
@@ -25,7 +25,7 @@ app.get("/word/:word", (req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
   
     split_word.forEach(letter => {
-      res.write(`${letter} <br>`);
+      res.write(`${letter}<br>`);
     });
     res.end();
 });
@@ -44,9 +44,9 @@ app.post("/login", (req, res) => {
     let password = req.body.password;
     
     if (user[0].username == username && user[0].password == password) {
-        res.send("Logged In");
+        res.status(200).send("Logged In");
     } else {
-        res.status(200).send("Invaild credentials");
+        res.status(422).send("Invaild credentials");
     }
 });
 
@@ -59,17 +59,17 @@ let users = [
     },
     {
         id: 1,
-        username: "chris123",
+        username: "joe24",
         password: "mypassword"
     },
     {
         id: 2,
-        username: "chris123",
+        username: "skunk45",
         password: "mypassword"
     },
     {
         id: 3,
-        username: "chris123",
+        username: "name1",
         password: "mypassword"
     }
 ]
