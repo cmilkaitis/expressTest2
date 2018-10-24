@@ -42,7 +42,6 @@ let user = [
     }
 ];
 
-  
 app.post("/login", (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
@@ -196,6 +195,7 @@ app.post('/todos/add', (req, res) => {
         return res.status(400).json({error: "Please enter in all required fields"})
     }
     todos.push({id: todo_id_count, title, author, content})
+    todo_id_count++
     res.status(200).redirect('/todos')
 })
 
@@ -265,7 +265,5 @@ app.delete('/todos/delete/author/:author', (req,res) => {
     } 
 
 })
-
-
 
 app.listen(port, console.log(`Listening on ${port}`))
