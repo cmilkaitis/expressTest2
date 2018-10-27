@@ -58,22 +58,22 @@ let users = [
     {
         id: 0,
         username: "chris123",
-        password: "mypassword"
+        password: "chrispassword"
     },
     {
         id: 1,
         username: "joe24",
-        password: "mypassword"
+        password: "joepassword"
     },
     {
         id: 2,
         username: "skunk45",
-        password: "mypassword"
+        password: "skunkpassword"
     },
     {
         id: 3,
         username: "name1",
-        password: "mypassword"
+        password: "namepassword"
     }
 ]
 
