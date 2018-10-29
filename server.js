@@ -107,4 +107,8 @@ app.delete('/:id', (req, res) => {
     res.status(200).redirect('/')
 })
 
+app.get('/home', (req,res) => {
+    res.json({msg: "Welcome to the homepage"})
+})
+
 app.listen(port, console.log(`Listening on ${port}`))
