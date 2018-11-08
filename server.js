@@ -37,7 +37,10 @@ match send a json with a status of "logged in" or respond with
 a json that has a status of "invalid credentials" */
 let user = [
     { username: "testuser1", password: "testpassword"},
-    { username: "testuser2", password: "testpassword"}
+    { username: "testuser2", password: "testpassword"},
+    { username: "testuser3", password: "testpassword"},
+
+
 ];
   
 app.get("/login", (req,res) => {
