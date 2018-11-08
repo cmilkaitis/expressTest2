@@ -36,12 +36,14 @@ check to see if the username and password send match. if they
 match send a json with a status of "logged in" or respond with 
 a json that has a status of "invalid credentials" */
 let user = [
-    {
-      username: "testuser1",
-      password: "testpassword"
-    }
+    { username: "testuser1", password: "testpassword"},
+    { username: "testuser2", password: "testpassword"}
 ];
   
+app.get("/login", (req,res) => {
+    res.json({msg: "Please send login via POSTMAN"})
+})
+
 app.post("/login", (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
