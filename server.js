@@ -60,22 +60,22 @@ let users = [
     {
         id: 0,
         username: "chris123",
-        password: "mypassword"
+        password: "chrispassword"
     },
     {
         id: 1,
         username: "joe24",
-        password: "mypassword"
+        password: "joepassword"
     },
     {
         id: 2,
         username: "skunk45",
-        password: "mypassword"
+        password: "skunkpassword"
     },
     {
         id: 3,
         username: "name1",
-        password: "mypassword"
+        password: "namepassword"
     }
 ]
 
@@ -107,6 +107,10 @@ app.delete('/:id', (req, res) => {
         return res.status(406).json({error: `No user id of ${id}`})
     }
     res.status(200).redirect('/')
+})
+
+app.get('/home', (req,res) => {
+    res.json({msg: "Welcome to the homepage"})
 })
 
 app.listen(port, console.log(`Listening on ${port}`))
